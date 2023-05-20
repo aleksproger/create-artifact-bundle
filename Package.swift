@@ -7,11 +7,12 @@ let package = Package(
     name: "create-artifact-bundle",
     platforms: [.macOS(.v11), .iOS(.v11)],
     products: [
+        .executable(name: "CreateArtifactBundle", targets: ["CreateArtifactBundle"]),
         .plugin(name: "CreateArtifactBundlePlugin", targets: ["CreateArtifactBundlePlugin"]),
     ],
     dependencies: [
         .package(url: "https://github.com/apple/swift-argument-parser", from: "1.2.0"),
-        .package(path: "../create-artifact-bundle-kit"),
+        .package(url: "https://github.com/aleksproger/create-artifact-bundle-kit.git", from: "2.0.0"),
     ],
     targets: [
         .executableTarget(name: "CreateArtifactBundle", dependencies: [
