@@ -13,19 +13,19 @@ extension CreateArtifactBundleCommand {
         var target: String
 
         /// Swift pluigns arguments parsing bug requires to use `_` prefix
-        @Option(help: "Version of the artifact bundle.")
+        @Option(name: .customLong("version", withSingleDash: false), help: "Version of the artifact bundle.")
         var _version: String
 
-        @Option(help: "Directory of the Swift package which contains the target.")
+        @Option(help: "Output directory for artifact bundle.")
         var outputDirectory: String = "."
 
         @Option(help: "Directory of the Swift package which contains the target.")
         var packageDirectory: String = "."
 
-        @Option(help: "Directory of the Swift package which contains the target.")
+        @Option(help: "Build directory.")
         var buildDirectory: String = ".build"
 
-        @Option(help: "Directory of the Swift package which contains the target.")
+        @Option(help: "MacOS triples to build for.")
         var triple: [MacOSTriple]
 
         func run() async throws {
@@ -41,8 +41,9 @@ extension CreateArtifactBundleCommand {
                 packageDirectory: packageDirectory
             )
 
-            let kit = Kits.fullFlow()
-            try await kit.run(with: configuration)
+            try await Kits
+                .fullFlow()
+                .run(with: configuration)
         }
     }
 }

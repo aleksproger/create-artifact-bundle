@@ -10,6 +10,7 @@ struct CreateArtifactBundleCommand: AsyncParsableCommand {
         subcommands: [
             FullFlow.self,
             PrebuiltBinariesFlow.self,
+            XCFrameworkFlow.self,
         ],
         defaultSubcommand: FullFlow.self
     )

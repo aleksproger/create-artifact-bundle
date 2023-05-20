@@ -29,8 +29,9 @@ extension CreateArtifactBundleCommand {
                 variants: prebuiltVariants(variant)
             )
 
-            let kit = Kits.prebuiltBinariesFlow(universalBinaryFactory: LipoBinaryFactory())
-            try await kit.run(with: configuration)
+            try await Kits
+                .prebuiltBinariesFlow()
+                .run(with: configuration)
         }
     }
 }
