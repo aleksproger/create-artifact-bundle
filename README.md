@@ -35,7 +35,7 @@ swift run CreateArtifactBundle prebuilt-binaries
 Also package provides `CreateArtifactBundlePlugin` which is a plugin wrapper around functionality for creating artifact bundle from package target.
 
 ```shell
-swift package plugin create-artifact-bundle \
+swift package plugin --allow-writing-to-package-directory create-artifact-bundle \
 --target CreateArtifactBundle \
 --version 1.0.0 \
 --triple arm64-apple-macos \
